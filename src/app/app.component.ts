@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MenuController, Platform } from '@ionic/angular';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   dark =false;
+  loggedIn = false;
 
   appPages = [
     {
@@ -30,6 +33,9 @@ export class AppComponent {
       icon: 'information-circle'
     }
   ];
-
-  constructor() {}
+  constructor(
+    private menu: MenuController,
+    private platform: Platform,
+    private statusBar: StatusBar
+  ) {}
 }

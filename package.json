@@ -22,6 +22,7 @@
     "@angular/router": "~12.0.1",
     "@capacitor/core": "3.0.1",
     "@ionic-native/firebase": "^5.33.1",
+    "@ionic-native/status-bar": "^5.33.1",
     "@ionic/angular": "^5.5.2",
     "firebase": "^8.6.7",
     "firebase-tools": "^9.13.0",
