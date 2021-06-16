@@ -28,16 +28,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then( m => m.TabsPagePageModule)
   },
   {
-    path: 'rutas',
-    loadChildren: () => import('./pages/rutas/rutas.module').then( m => m.RutasPageModule)
-  },
-  {
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
   {
-    path: 'grupos',
-    loadChildren: () => import('./pages/grupos/grupos.module').then( m => m.GruposPageModule)
+    path: 'app',
+    loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsPagePageModule)
   },
 ];
 

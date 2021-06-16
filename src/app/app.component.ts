@@ -1,6 +1,6 @@
+/* eslint-disable no-trailing-spaces */
 import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,9 @@ export class AppComponent {
 
   appPages = [
     {
-      title: 'Schedule',
-      url: '/app/tabs/schedule',
-      icon: 'calendar'
+      title: 'Inicio',
+      url: '/app/tabs/landing',
+      icon: 'home'
     },
     {
       title: 'Grupos',
@@ -24,7 +24,7 @@ export class AppComponent {
     },
     {
       title: 'Rutas',
-      url: '/app/tabs/map',
+      url: '/app/tabs/rutas',
       icon: 'map'
     },
     {
@@ -35,7 +35,10 @@ export class AppComponent {
   ];
   constructor(
     private menu: MenuController,
-    private platform: Platform,
-    private statusBar: StatusBar
+    private platform: Platform
   ) {}
+
+  logout(){
+    
+  }
 }

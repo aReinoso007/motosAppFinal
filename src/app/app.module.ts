@@ -16,9 +16,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { UserDataDirective } from './providers/user-data.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserDataDirective],
   entryComponents: [],
   imports: [
     BrowserModule,

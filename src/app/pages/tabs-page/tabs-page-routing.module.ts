@@ -31,10 +31,23 @@ const routes: Routes = [
         ]
       },
       {
-        path: '',
-        redirectTo: '/app/tabs/schedule',
-        pathMatch: 'full'
-      }
+      path: 'grupos',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../grupos/grupos.module').then(m => m.GruposPageModule)
+          }
+        ]
+      },
+      {
+        path: 'landing',
+          children: [
+            {
+              path: '',
+              loadChildren: () => import('../landing/landing.module').then(m => m.LandingPageModule)
+            }
+          ]
+        }
     ]
   }
 ];
