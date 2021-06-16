@@ -24,4 +24,24 @@ export class AuthService {
     );
   }
 
+  async signUp(name: string, email: string, password: string): Promise<any> {
+    try{
+      await this.afAuth.createUserWithEmailAndPassword(email, password);
+      const user = await this.afAuth.currentUser;
+      return await user.updateProfile({
+        displayName: name,
+        photoURL: 'https://image.flaticon.com/icons/png/512/1341/1341527.png'
+      });
+    }catch(err){
+      console.error('Error signinup user: ', JSON.stringify(err));
+      return err;
+    }
+  }
+
+  userExists(email: string){
+    return this.afs
+          .collection('users', ref=> ref.where('email', '==', email))
+          .valueChanges().pipe(first()).toPromise();
+  }
+
 }
