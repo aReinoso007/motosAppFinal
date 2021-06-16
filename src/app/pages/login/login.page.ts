@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
       const error = await this.authService.emailPasswordLogin(this.login.email, this.login.password);
       if(error === undefined ){
         console.log('login exitoso, redirigiendo a dashboard de usuario');
-        this.router.navigateByUrl('app/tabs');
+        this.router.navigateByUrl('/app/tabs/landing');
       }else{
         alert(JSON.stringify(error));
       }
