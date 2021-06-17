@@ -24,12 +24,15 @@ export class RegistroDatosPage implements OnInit {
       this.user = data;
       this.userInfo.uidUsuario = data.uid;
     });
-    console.log('user retrieved: ', this.user);
+    console.log('user retrieved: ', );
   }
 
   saveUserInfo(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('user localStorage: ', user.uid);
+    console.log('uid del usuario: ', user.uid);
     if(this.userInfo !== undefined){
-      this.userService.insertUserData(this.userInfo);
+      this.userService.insertUserData(this.userInfo, user.uid);
       this.userInfo = new UserInfo();
       alert('Registro completado exitosamente');
       this.router.navigateByUrl('/app/tabs/landing');

@@ -24,7 +24,7 @@ export class AuthService {
         if(user){
           this.userData = user;
           localStorage.setItem('user', JSON.stringify(this.userData));
-          console.log('informacion de usuario: ', localStorage.getItem('user'));
+          //console.log('informacion de usuario: ', localStorage.getItem('user'));
           return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
         }else {
           return of(null);

@@ -10,11 +10,10 @@ export class UsuarioService {
 
   constructor(private afs: AngularFirestore) { }
 
-  insertUserData(userInfo: UserInfo){
+  insertUserData(userInfo: UserInfo, uid: string){
     const refUserInfo = this.afs.collection('users');
-    userInfo.uid = this.afs.createId();
     const param = JSON.parse(JSON.stringify(userInfo));
-    refUserInfo.doc(userInfo.uid).collection<any>('informacion').doc(userInfo.uid).set(param, {merge: true});
+    refUserInfo.doc(uid).collection<any>('informacion').doc(userInfo.uid).set(param, {merge: true});
   }
 
   addMotorcyle(moto: Moto){
