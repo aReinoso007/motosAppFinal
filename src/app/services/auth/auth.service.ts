@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable no-throw-literal */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/quotes */
@@ -75,7 +76,7 @@ export class AuthService {
         email: user.email || null,
         displayName: user.displayName || '',
         photoURL: user.photoURL,
-        provider,
+        provider: provider,
         lastLogin: new Date(Number(user.lastLoginAt)) || new Date(),
         createdAt: new Date(Number(user.createdAt)) || new Date()
       };

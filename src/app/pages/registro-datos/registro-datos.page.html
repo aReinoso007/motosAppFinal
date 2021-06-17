@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro-datos</ion-title>
+    <ion-title>Datos adicionales</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Telefono</ion-label>
+      <ion-input [(ngModel)]="userInfo.telefono"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>Pais</ion-label>
+      <ion-input [(ngModel)]="userInfo.pais"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Provincia</ion-label>
+      <ion-select placeholder="Seleccione una"  [value]="userInfo.provincia" interface="popover">
+        <ion-select-option value="Azuay">Azuay</ion-select-option>
+        <ion-select-option value="Cañar">Cañar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ciudad</ion-label>
+      <ion-select placeholder="Seleccione una"  [value]="userInfo.ciudad" interface="popover">
+        <ion-select-option value="Azuay">Cuenca</ion-select-option>
+        <ion-select-option value="Cañar">Azogues</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button (click)="saveUserInfo()" type="submit" expand="block" color="success">Registrarse</ion-button>
+  </ion-list>
 </ion-content>

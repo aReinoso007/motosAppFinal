@@ -23,7 +23,10 @@ export class SignupPage implements OnInit {
     if(form.valid){
       const error = await this.authService.signUp(this.signup.name, this.signup.email, this.signup.password);
       if(error === undefined){
-        this.router.navigateByUrl('/app/tabs/grupos');
+        this.authService.emailPasswordLogin(this.signup.email, this.signup.password).then(res=>{
+          this.router.navigateByUrl('registro-datos');
+          alert('Registro exitoso');
+        });
       }else {
         const e = JSON.stringify(error);
         if (e.includes('The email address is badly formatted'))

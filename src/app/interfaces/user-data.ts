@@ -1,5 +1,4 @@
-
-export class UserInfo {
+export interface UserData {
     uid: string;
     uidUsuario: string;
     telefono: string;
