@@ -47,7 +47,16 @@ const routes: Routes = [
               loadChildren: () => import('../landing/landing.module').then(m => m.LandingPageModule)
             }
           ]
-        }
+      },
+      {
+        path: 'motos',
+          children: [
+            {
+              path: '',
+              loadChildren: () => import('../motos/motos.module').then(m => m.MotosPageModule)
+            }
+          ]
+        },
     ]
   }
 ];

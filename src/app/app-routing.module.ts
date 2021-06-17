@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'motos',
     loadChildren: () => import('./pages/motos/motos.module').then( m => m.MotosPageModule)
   },
+  {
+    path: 'registro-datos',
+    loadChildren: () => import('./pages/registro-datos/registro-datos.module').then( m => m.RegistroDatosPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+/* eslint-disable curly */
 import { UserOptions } from './../../interfaces/user-options';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -23,6 +24,12 @@ export class SignupPage implements OnInit {
       const error = await this.authService.signUp(this.signup.name, this.signup.email, this.signup.password);
       if(error === undefined){
         this.router.navigateByUrl('/app/tabs/grupos');
+      }else {
+        const e = JSON.stringify(error);
+        if (e.includes('The email address is badly formatted'))
+          alert('Debe ingresar un correo válido');
+        if (e.includes('Password should be at least 6 characters'))
+          alert('La contraseña debe tener por lo menos 6 caracteres');
       }
     }
   }
