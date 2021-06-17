@@ -1,14 +1,16 @@
+import { OnInit } from '@angular/core';
 /* eslint-disable no-trailing-spaces */
 import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  dark =false;
+export class AppComponent implements OnInit{
+  dark = false;
   loggedIn = false;
 
   appPages = [
@@ -35,10 +37,20 @@ export class AppComponent {
   ];
   constructor(
     private menu: MenuController,
-    private platform: Platform
+    private platform: Platform,
+    public authService: AuthService
   ) {}
+
+  async ngOnInit(){
+    console.log('usuario loggeado: ');
+  }
 
   logout(){
     
   }
+
+  checkLoginStatus(){
+    //return this.authService.
+  }
+
 }

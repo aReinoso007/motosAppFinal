@@ -14,12 +14,16 @@ import * as firebase from 'firebase/app';
 })
 export class AuthService {
 
+  userData: any;
   public user: Observable<any>;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user=>{
         if(user){
+          this.userData = user;
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          console.log('informacion de usuario: ', localStorage.getItem('user'));
           return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
         }else {
           return of(null);
@@ -89,6 +93,12 @@ export class AuthService {
     console.log("data: ", JSON.stringify(data));
     const userRef = this.afs.collection<any>('users');
     return userRef.doc(`${user.uid}`).set(data, {merge: true});
+  }
+
+  get isLoggedIn(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    /* esta funcion verifica si hay un usuario, retorna true si lo hay y false sino */
+    return (user !==null) ? true : false;
   }
 
 }

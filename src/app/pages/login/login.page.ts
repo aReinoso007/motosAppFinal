@@ -12,6 +12,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginPage implements OnInit {
   login: UserOptions = { name:'', email:'', password:''};
   submitted = false;
+
+  showPassword = false;
+  passwordToggleIcon = 'eye';
+  estado = false;
   constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
@@ -25,8 +29,18 @@ export class LoginPage implements OnInit {
         console.log('login exitoso, redirigiendo a dashboard de usuario');
         this.router.navigateByUrl('/app/tabs/landing');
       }else{
+        console.log('usuario o contrasena incorrectos');
         alert(JSON.stringify(error));
       }
+    }
+  }
+
+  togglePassword() {
+    this.showPassword =!this.showPassword;
+    if(this.passwordToggleIcon === 'eye' ){
+      this.passwordToggleIcon = 'eye-off';
+    }else{
+      this.passwordToggleIcon = 'eye';
     }
   }
 
