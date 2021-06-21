@@ -102,4 +102,8 @@ export class AuthService {
     return (user !==null) ? true : false;
   }
 
+  async logOut(): Promise<any>{
+    return this.afAuth.signOut();
+  }
+
 }
