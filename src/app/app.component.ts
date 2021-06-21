@@ -12,6 +12,7 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent implements OnInit{
   dark = false;
   loggedIn = false;
+  isSpanish = true;
 
   appPages = [
     {
@@ -56,6 +57,12 @@ export class AppComponent implements OnInit{
 
   checkLoginStatus(){
     //return this.authService.
+  }
+
+  useLanguge(){
+    /*Cuando es true -> espanol, false -> ingles */
+    this.isSpanish = !this.isSpanish;
+    //this.isSpanish ? 
   }
 
 }
