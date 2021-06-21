@@ -7,4 +7,5 @@ export class Moto{
     anio: string;
     placa: string;
     kilometraje: number;
+    photoURL: string;
 }

@@ -1,0 +1,13 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ion-button {
+    color: gray;
+}
+
+ion-button:hover {
+    color: green;
+}

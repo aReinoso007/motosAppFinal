@@ -103,6 +103,7 @@ export class AuthService {
   }
 
   async logOut(): Promise<any>{
+    localStorage.removeItem('user');
     return this.afAuth.signOut();
   }
 

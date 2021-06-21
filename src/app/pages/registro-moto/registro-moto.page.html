@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro-moto</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrar nueva moto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="formulario">
+    <ion-item>
+      <ion-label>Marca</ion-label>
+      <ion-input [(ngModel)]="moto.marca"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Modelo</ion-label>
+      <ion-input type="text" [(ngModel)]="moto.modelo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cilindraje</ion-label>
+      <ion-input type="number" [(ngModel)]="moto.cilindraje"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Año</ion-label>
+      <ion-input type="number" [(ngModel)]="moto.anio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Kilometraje</ion-label>
+      <ion-input type="number" [(ngModel)]="moto.kilometraje"></ion-input>
+    </ion-item>
+
+    <ion-button color="success">Guardar</ion-button>
+
+  </div>
 
 </ion-content>

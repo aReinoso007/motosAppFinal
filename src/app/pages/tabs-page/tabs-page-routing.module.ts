@@ -56,6 +56,15 @@ const routes: Routes = [
               loadChildren: () => import('../motos/motos.module').then(m => m.MotosPageModule)
             }
           ]
+      },
+      {
+        path: 'registromoto',
+          children: [
+            {
+              path: '',
+              loadChildren: () => import('../registro-moto/registro-moto.module').then(m => m.RegistroMotoPageModule)
+            }
+          ]
         },
     ]
   }

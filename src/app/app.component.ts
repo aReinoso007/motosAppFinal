@@ -10,7 +10,7 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit{
-  dark = false;
+  dark = true;
   loggedIn = false;
   isSpanish = true;
 
@@ -54,6 +54,7 @@ export class AppComponent implements OnInit{
   logout(){
     this.authService.logOut();
     this.updateLoginStatus(this.loggedIn);
+    console.log('usuario: ', localStorage.getItem('user'));
   }
 
   checkLoginStatus(){
@@ -62,7 +63,7 @@ export class AppComponent implements OnInit{
 
   updateLoginStatus(loggedIn: boolean){
     setTimeout(()=>{
-      this.loggedIn = this.checkLoginStatus();
+      loggedIn = this.checkLoginStatus();
     }, 100);
   }
 
