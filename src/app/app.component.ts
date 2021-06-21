@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
   ) {}
 
   async ngOnInit(){
-    console.log('usuario loggeado: ');
+    this.updateLoginStatus(this.loggedIn);
   }
 
   logout(){
@@ -56,7 +56,13 @@ export class AppComponent implements OnInit{
   }
 
   checkLoginStatus(){
-    //return this.authService.
+    return this.authService.isLoggedIn;
+  }
+
+  updateLoginStatus(loggedIn: boolean){
+    setTimeout(()=>{
+      this.loggedIn = this.checkLoginStatus();
+    }, 100);
   }
 
   useLanguge(){
