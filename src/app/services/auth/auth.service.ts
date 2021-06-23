@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+//import firebase from 'firebase'
 
 @Injectable({
   providedIn: 'root'
@@ -97,13 +98,12 @@ export class AuthService {
   }
 
   get isLoggedIn(){
-    const user = JSON.parse(localStorage.getItem('user'));
-    /* esta funcion verifica si hay un usuario, retorna true si lo hay y false sino */
+    const user = firebase.default.auth().currentUser;
+    console.log('usuario recuperado: ', user);
     return (user !==null) ? true : false;
   }
 
   async logOut(): Promise<any>{
-    localStorage.removeItem('user');
     return this.afAuth.signOut();
   }
 
