@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { MotosService } from 'src/app/services/motos/motos.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-motos',
@@ -9,15 +11,16 @@ import { MotosService } from 'src/app/services/motos/motos.service';
 })
 export class MotosPage implements OnInit {
   motosList: any[] = [];
-  userData: any;
-  constructor(private motosService: MotosService, private router: Router) { }
+  constructor(private motosService: MotosService, private router: Router, private userService: UsuarioService) { }
   ngOnInit() {
-    this.checkUser();
+    this.getMotosList();
   }
 
   getMotosList(){
+    const user = this.userService.getCurrentUser();
+    console.log('uid del usuario recuperado: ', user.uid);
     try{
-      this.motosService.getUserMotos(this.userData.uid)
+      this.motosService.getUserMotos(user.uid)
       .subscribe(data=>{
         this.motosList = JSON.parse(JSON.stringify(data));
       });
@@ -25,17 +28,4 @@ export class MotosPage implements OnInit {
       throw console.error('error retrieving user motoslist: ', err.message);
     }
   }
-
-  checkUser(){
-    this.userData = JSON.parse(JSON.stringify(localStorage.getItem('user')));
-    console.log('userData: ', this.userData);
-    if(this.userData === null){
-      alert('Login to access dashboard');
-      this.router.navigateByUrl('/login');
-      return false;
-    }else{
-      return true;
-    }
-  }
-
 }

@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
 import { AuthService } from './services/auth/auth.service';
+import { UsuarioService } from './services/usuario/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -44,7 +45,8 @@ export class AppComponent implements OnInit{
   constructor(
     private menu: MenuController,
     private platform: Platform,
-    public authService: AuthService
+    public authService: AuthService,
+    private userService: UsuarioService
   ) {}
 
   async ngOnInit(){
@@ -57,14 +59,11 @@ export class AppComponent implements OnInit{
     console.log('usuario: ', localStorage.getItem('user'));
   }
 
-  checkLoginStatus(){
-    return this.authService.isLoggedIn;
-  }
-
   updateLoginStatus(loggedIn: boolean){
-    setTimeout(()=>{
-      loggedIn = this.checkLoginStatus();
-    }, 100);
+    const user = this.userService.getCurrentUser();
+    if(user !== undefined){
+      this.loggedIn = true;
+    }
   }
 
   useLanguge(){

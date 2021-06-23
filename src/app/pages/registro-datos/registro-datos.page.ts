@@ -28,7 +28,8 @@ export class RegistroDatosPage implements OnInit {
   }
 
   saveUserInfo(){
-    const user = JSON.parse(localStorage.getItem('user'));
+    //const user = JSON.parse(localStorage.getItem('user'));
+    const user = this.userService.getCurrentUser();
     console.log('user localStorage: ', user.uid);
     console.log('uid del usuario: ', user.uid);
     if(this.userInfo !== undefined){

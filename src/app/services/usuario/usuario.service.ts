@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Moto } from 'src/app/model/moto.model';
 import { UserInfo } from 'src/app/model/userInfo.model';
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,12 @@ export class UsuarioService {
 
   addMotorcyle(moto: Moto){
     const refMotoInfo = this.afs.collection('users');
+  }
+
+  getCurrentUser(){
+    const user = firebase.auth().currentUser;
+    console.log('current user: ', user);
+    return user;
   }
 
 }
