@@ -21,7 +21,8 @@ export class MotosService {
       }
     }
   }
-  /*Refactor to get user uid from moto */
+  /*Refactor to get user uid from moto
+  el uid de usuario no puede ser el nombre de las motos, eso toca mejorar*/
   addUserMoto(moto: Moto, uidUser: string){
     try{
       const refUser = this.afs.collection('users');
