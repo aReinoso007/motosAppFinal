@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['welcome']);
 
 const routes: Routes = [
   {
@@ -24,24 +28,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
   {
-    path: 'tabs-page',
+    path: 'tabs-page', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin},
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then( m => m.TabsPagePageModule)
   },
   {
-    path: 'cuenta',
+    path: 'cuenta', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin},
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
   {
     path: 'app',
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsPagePageModule)
-  },
-  {
-    path: 'registro-moto',
-    loadChildren: () => import('./pages/registro-moto/registro-moto.module').then( m => m.RegistroMotoPageModule)
-  },
-  {
-    path: 'motos',
-    loadChildren: () => import('./pages/motos/motos.module').then( m => m.MotosPageModule)
   },
   {
     path: 'registro-datos',

@@ -9,13 +9,10 @@ import { MotosService } from 'src/app/services/motos/motos.service';
 })
 export class MotosPage implements OnInit {
   motosList: any[] = [];
-  userData = JSON.parse(JSON.stringify(localStorage.getItem('user')));
+  userData: any;
   constructor(private motosService: MotosService, private router: Router) { }
   ngOnInit() {
-    console.log('uid usuario loggeado: ', this.userData);
     this.checkUser();
-    this.getMotosList();
-    console.log('motos recuperadas: ', this.motosList);
   }
 
   getMotosList(){
@@ -30,8 +27,9 @@ export class MotosPage implements OnInit {
   }
 
   checkUser(){
-    console.log('verificando...');
-    if(this.userData === undefined){
+    this.userData = JSON.parse(JSON.stringify(localStorage.getItem('user')));
+    console.log('userData: ', this.userData);
+    if(this.userData === null){
       alert('Login to access dashboard');
       this.router.navigateByUrl('/login');
       return false;

@@ -30,7 +30,8 @@ import { UserDataDirective } from './providers/user-data.directive';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

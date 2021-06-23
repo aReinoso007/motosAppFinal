@@ -8,19 +8,6 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPagePage,
     children: [
-      /*{
-        path: 'schedule',
-        children: [
-          {
-            path: '',
-            component: SchedulePage,
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
-          }
-        ]
-      },*/
       {
         path: 'rutas',
         children: [
