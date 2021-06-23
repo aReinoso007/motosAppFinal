@@ -28,6 +28,7 @@ export class RegistroMotoPage implements OnInit {
     if(user){
       const uidUser = user.uid;
       const imageURL = await this.motosService.uploadPhoto(uidUser, this.selectedFile);
+      this.moto.photoURL = imageURL;
       this.motosService.addUserMoto(this.moto, uidUser);
       alert('Moto ingresada exitosamente');
       this.moto = new Moto();

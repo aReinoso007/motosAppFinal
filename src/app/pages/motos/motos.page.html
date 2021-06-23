@@ -7,9 +7,43 @@
     <ion-title>Mis Motos</ion-title>
   </ion-toolbar>
 </ion-header>
-<div *ngIf="" >
-  
-</div>
 <ion-content>
+  <div *ngIf="motosList.length < 1" class="no-list">
+    <ion-item>
+      <ion-button (click)="registerMotos()">Registrar</ion-button>
+    </ion-item>
+  </div>
 
+  <div class="motos-list">
+    <ion-card *ngFor="let item of motosList" (click)="verMoto(item.uid)">
+      <ion-item>
+        <ion-label >
+          <h3>{{item.marca}} - {{item.modelo}}</h3>
+        </ion-label>
+      </ion-item>
+      <img src="{{item.photoURL}}" alt="ion">
+
+      <ion-footer>
+        <ion-row>
+          <ion-col center text-center>
+            <button>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>{{item.cilindraje}}</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <button>
+              <div>{{item.anio}}</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <button>
+              <ion-icon name="time">Año</ion-icon>
+              <div>{{item.kilometraje | number}} KM</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-card>
+  </div>
 </ion-content>
