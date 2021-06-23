@@ -35,11 +35,6 @@ export class AppComponent implements OnInit{
       title: 'Motos',
       url: '/app/tabs/motos',
       icon: 'bicycle'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
     }
   ];
   constructor(

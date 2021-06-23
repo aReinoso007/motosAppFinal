@@ -15,6 +15,9 @@
   </div>
 
   <div class="motos-list">
+    <ion-item>
+      <ion-button (click)="registerMotos()">Registrar</ion-button>
+    </ion-item>
     <ion-card *ngFor="let item of motosList" (click)="verMoto(item.uid)">
       <ion-item>
         <ion-label >
