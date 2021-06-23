@@ -10,6 +10,9 @@
 <ion-content>
   <div class="formulario">
     <ion-item>
+      <input type="file" name="inputFile" (change)="chooseFile($event)" required>
+    </ion-item>
+    <ion-item>
       <ion-label>Marca</ion-label>
       <ion-input [(ngModel)]="moto.marca"></ion-input>
     </ion-item>
@@ -34,7 +37,7 @@
       <ion-input type="number" [(ngModel)]="moto.kilometraje"></ion-input>
     </ion-item>
 
-    <ion-button color="success">Guardar</ion-button>
+    <ion-button color="success" (click)="addMoto()">Guardar</ion-button>
 
   </div>
 
