@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserOptions } from 'src/app/interfaces/user-options';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',

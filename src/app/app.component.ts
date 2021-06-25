@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
 import { AuthService } from './services/auth/auth.service';
 import { UsuarioService } from './services/usuario/usuario.service';
+//import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -39,10 +40,12 @@ export class AppComponent implements OnInit{
   ];
   constructor(
     private menu: MenuController,
-    private platform: Platform,
+    //private platform: Platform,
     public authService: AuthService,
-    private userService: UsuarioService
-  ) {}
+    private userService: UsuarioService,
+    //private statusBar: StatusBar
+  ) { //this.initializeApp();
+  }
 
   async ngOnInit(){
     this.updateLoginStatus(this.loggedIn);
@@ -51,12 +54,14 @@ export class AppComponent implements OnInit{
   logout(){
     this.authService.logOut();
     this.updateLoginStatus(this.loggedIn);
-    console.log('usuario: ', localStorage.getItem('user'));
+    localStorage.removeItem('user');
   }
 
   updateLoginStatus(loggedIn: boolean){
     const user = this.userService.getCurrentUser();
-    if(user !== undefined){
+    console.log('current user:', user);
+    // eslint-disable-next-line eqeqeq
+    if(user != undefined || user != null){
       this.loggedIn = true;
     }
   }

@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import { LoadingController } from '@ionic/angular';
 //import firebase from 'firebase'
 
 @Injectable({
@@ -18,8 +19,13 @@ export class AuthService {
 
   userData: any;
   public user: Observable<any>;
+  loading: any;
 
-  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+  constructor(
+    private afs: AngularFirestore, 
+    private afAuth: AngularFireAuth,
+    public loadingCTRL: LoadingController
+    ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user=>{
         if(user){
@@ -36,14 +42,20 @@ export class AuthService {
 
   async signUp(name: string, email: string, password: string): Promise<any> {
     try{
+      this.loading = await this.loadingCTRL.create({
+        message: 'Registrando'
+      });
+      await this.loading.present();
       await this.afAuth.createUserWithEmailAndPassword(email, password);
       const user = await this.afAuth.currentUser;
+      this.loading.dismiss();
       return await user.updateProfile({
         displayName: name,
         photoURL: 'https://image.flaticon.com/icons/png/512/1341/1341527.png'
       });
     }catch(err){
       console.error('Error signinup user: ', JSON.stringify(err));
+      this.loading.dismiss();
       return err;
     }
   }
