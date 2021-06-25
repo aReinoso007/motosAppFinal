@@ -15,16 +15,20 @@ ion-item {
 
   ion-input {
     font-size: 18px;
+    --color: black;
+    --placeholder-color: green; 
     --padding-top: 20px;
     --padding-bottom: 15px;
     --padding-start: 5px;
     background-color: #ffffff;
   }
+  
 
   a {
     font-size: 17px;
     letter-spacing: 0.5px;
     text-decoration: none;
+    color: #0a0a0a;
   }
 }
 
