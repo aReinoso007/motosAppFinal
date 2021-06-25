@@ -15,8 +15,7 @@ export class MotosPage implements OnInit {
   constructor(
     private motosService: MotosService, 
     private router: Router, 
-    private userService: UsuarioService, 
-    private decimalPipe: DecimalPipe) { }
+    private userService: UsuarioService) { }
   ngOnInit() {
     this.getMotosList();
     console.log('motoslist: ', this.motosList.length);
