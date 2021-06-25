@@ -13,7 +13,7 @@ import { UsuarioService } from './services/usuario/usuario.service';
 })
 export class AppComponent implements OnInit{
   dark = true;
-  loggedIn = false;
+  loggedIn: boolean;
   isSpanish = true;
 
   appPages = [
@@ -61,8 +61,10 @@ export class AppComponent implements OnInit{
     const user = this.userService.getCurrentUser();
     console.log('current user:', user);
     // eslint-disable-next-line eqeqeq
-    if(user != undefined || user != null){
+    if(user !== null){
       this.loggedIn = true;
+    }else{
+      this.loggedIn = false;
     }
   }
 

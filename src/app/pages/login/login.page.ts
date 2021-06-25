@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
 
   showPassword = false;
   passwordToggleIcon = 'eye';
-  estado = false;
+
   constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
@@ -36,17 +36,13 @@ export class LoginPage implements OnInit {
     }
   }
 
-  togglePassword() {
+  togglePassword(){
     this.showPassword =!this.showPassword;
     if(this.passwordToggleIcon === 'eye' ){
       this.passwordToggleIcon = 'eye-off';
     }else{
       this.passwordToggleIcon = 'eye';
     }
-  }
-
-  onSignup() {
-    this.router.navigateByUrl('/signup');
   }
 
 }
