@@ -8,49 +8,73 @@
 </ion-header>
 
 <ion-content>
-  <div class="signup-logo">
-    <img src="../../../assets/img/formularios/register.png" alt="Ionic Logo" width="40%">
+  <div id="header">
+    <img
+      src="../../../assets/img/formularios/register.png"
+      alt="Ionic Logo"
+    />
   </div>
 
   <form #signupForm="ngForm" novalidate>
-    <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked" color="primary">Nombre</ion-label>
+      <ion-input
+        [(ngModel)]="signup.name"
+        name="name"
+        type="text"
+        #name="ngModel"
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      <p [hidden]="name.valid || submitted === false" class="ion-padding-start">
+        Nombre es requerido
+      </p>
+    </ion-text>
 
-      <ion-item>
-        <ion-label position="stacked" color="primary">Nombre</ion-label>
-        <ion-input [(ngModel)]="signup.name" name="name" type="text" #name="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="name.valid || submitted === false" class="ion-padding-start">
-          Nombre es requerido
-        </p>
-      </ion-text>
+    <ion-item>
+      <ion-label position="stacked" color="primary">Email</ion-label>
+      <ion-input
+        [(ngModel)]="signup.email"
+        name="username"
+        type="text"
+        #email="ngModel"
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      <p
+        [hidden]="email.valid || submitted === false"
+        class="ion-padding-start"
+      >
+        Email es requerido
+      </p>
+    </ion-text>
 
-      <ion-item>
-        <ion-label position="stacked" color="primary">Email</ion-label>
-        <ion-input [(ngModel)]="signup.email" name="username" type="text" #email="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="email.valid || submitted === false" class="ion-padding-start">
-          Email es requerido
-        </p>
-      </ion-text>
+    <ion-item>
+      <ion-label position="stacked" color="primary">Contraseña</ion-label>
+      <ion-input
+        [(ngModel)]="signup.password"
+        name="password"
+        type="password"
+        #password="ngModel"
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      <p
+        [hidden]="password.valid || submitted === false"
+        class="ion-padding-start"
+      >
+        Contraseña es requerida
+      </p>
+    </ion-text>
 
-      <ion-item>
-        <ion-label position="stacked" color="primary">Contraseña</ion-label>
-        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="password.valid || submitted === false" class="ion-padding-start">
-          Contraseña es requerida
-        </p>
-      </ion-text>
-    </ion-list>
-
-    <div class="ion-padding">
-      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Registrarse</ion-button>
-    </div>
+    <ion-button (click)="onSignup(signupForm)" type="submit" expand="block"
+      >Registrarse</ion-button
+    >
   </form>
 </ion-content>
