@@ -49,6 +49,7 @@ export class AuthService {
       await this.afAuth.createUserWithEmailAndPassword(email, password);
       const user = await this.afAuth.currentUser;
       this.loading.dismiss();
+      window.dispatchEvent(new CustomEvent('user:signup'));
       return await user.updateProfile({
         displayName: name,
         photoURL: 'https://image.flaticon.com/icons/png/512/1341/1341527.png'
@@ -74,7 +75,9 @@ export class AuthService {
       await this.loading.present();
       const credentials = firebase.default.auth.EmailAuthProvider.credential(email, password);
       const firebaseUser = await firebase.default.auth().signInWithCredential(credentials);
+
       this.loading.dismiss();
+      window.dispatchEvent(new CustomEvent('user:login'));
       return await this.updateUserData(firebaseUser.user, 'email');
     }catch(err){
       this.loading.dismiss();
@@ -117,11 +120,12 @@ export class AuthService {
 
   get isLoggedIn(){
     const user = firebase.default.auth().currentUser;
-    console.log('usuario recuperado: ', user);
+    console.log('usuario recuperado de funcion: ', user);
     return (user !==null) ? true : false;
   }
 
   async logOut(): Promise<any>{
+    window.dispatchEvent(new CustomEvent('user:logout'));
     return this.afAuth.signOut();
   }
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 /* eslint-disable no-trailing-spaces */
 import { Component } from '@angular/core';
@@ -13,7 +14,7 @@ import { UsuarioService } from './services/usuario/usuario.service';
 })
 export class AppComponent implements OnInit{
   dark = true;
-  loggedIn: boolean;
+  loggedIn = false;
   isSpanish = true;
 
   appPages = [
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit{
   ];
   constructor(
     private menu: MenuController,
+    private router: Router,
     //private platform: Platform,
     public authService: AuthService,
     private userService: UsuarioService,
@@ -47,31 +49,40 @@ export class AppComponent implements OnInit{
   ) { //this.initializeApp();
   }
 
-  async ngOnInit(){
-    this.updateLoginStatus(this.loggedIn);
+  ngOnInit(){
+    this.checkLoginStatus();
+    this.listenForLoginEvents();
   }
 
   logout(){
     this.authService.logOut();
     this.updateLoginStatus(this.loggedIn);
-    localStorage.removeItem('user');
+    console.log('updated loggedin status: ', this.loggedIn);
+    this.router.navigateByUrl('/home');
+    
+  }
+
+  checkLoginStatus(){
+    console.log('get isLogged in function: ', this.authService.isLoggedIn);
+    return this.updateLoginStatus(this.authService.isLoggedIn);
   }
 
   updateLoginStatus(loggedIn: boolean){
-    const user = this.userService.getCurrentUser();
-    console.log('current user:', user);
-    // eslint-disable-next-line eqeqeq
-    if(user !== null){
-      this.loggedIn = true;
-    }else{
-      this.loggedIn = false;
-    }
+    this.loggedIn = loggedIn;
   }
 
-  useLanguge(){
-    /*Cuando es true -> espanol, false -> ingles */
-    this.isSpanish = !this.isSpanish;
-    //this.isSpanish ? 
+  listenForLoginEvents() {
+    window.addEventListener('user:login', ()=>{
+      this.updateLoginStatus(true);
+    });
+
+    window.addEventListener('user:signup', () => {
+      this.updateLoginStatus(true);
+    });
+
+    window.addEventListener('user:logout', () => {
+      this.updateLoginStatus(false);
+    });
   }
 
 }
