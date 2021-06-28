@@ -11,9 +11,10 @@ export class MotosService {
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
-  async uploadPhoto(id, file: any): Promise<any>{
+  async uploadPhoto(file: any): Promise<any>{
     if(file && file.length){
       try{
+        const id = this.afs.createId();
         const task = await this.storage.ref('motos').child(id).put(file[0]);
         return this.storage.ref(`motos/${id}`).getDownloadURL().toPromise();
       }catch(err){
@@ -26,6 +27,7 @@ export class MotosService {
   addUserMoto(moto: Moto, uidUser: string){
     try{
       const refUser = this.afs.collection('users');
+      moto.uid = this.afs.createId();
       const param = JSON.parse(JSON.stringify(moto));
       refUser.doc(uidUser).collection<any>('motos').doc(moto.uid).set(param, {merge: true});
     }catch(err){

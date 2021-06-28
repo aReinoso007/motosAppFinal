@@ -1,5 +1,6 @@
 /* eslint-disable no-trailing-spaces */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Moto } from 'src/app/model/moto.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MotosService } from 'src/app/services/motos/motos.service';
@@ -15,24 +16,26 @@ export class RegistroMotoPage implements OnInit {
   moto: Moto = new Moto();
   selectedFile: any;
   usuario = JSON.parse(JSON.stringify(localStorage.getItem('user')));
-  constructor(private motosService: MotosService, private userService: UsuarioService) { }
+  constructor(
+    private motosService: MotosService, 
+    private userService: UsuarioService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
-    console.log('nombre: ', this.usuario.name, ' uid: ', this.usuario.uid);
   }
 
   async addMoto() {
-    /*Obtener uid del usuario */
-    //const user = JSON.parse(localStorage.getItem('user'));
     const user = await this.userService.getCurrentUser();
     if(user){
       const uidUser = user.uid;
-      const imageURL = await this.motosService.uploadPhoto(uidUser, this.selectedFile);
+      const imageURL = await this.motosService.uploadPhoto(this.selectedFile);
       this.moto.photoURL = imageURL;
       this.motosService.addUserMoto(this.moto, uidUser);
       alert('Moto ingresada exitosamente');
       this.moto = new Moto();
-      /*Redirigir a la lista de motos y mandar a refrescar la lista de las motos */
+      this.router.navigateByUrl('/app/tabs/motos');
+      
     }else{
       throw console.error('Usuario no loggeado');
     }
