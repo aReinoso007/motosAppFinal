@@ -2,9 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Moto } from 'src/app/model/moto.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { MotosService } from 'src/app/services/motos/motos.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registro-moto',
@@ -19,7 +19,8 @@ export class RegistroMotoPage implements OnInit {
   constructor(
     private motosService: MotosService, 
     private userService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private location: Location
     ) { }
 
   ngOnInit() {
@@ -43,6 +44,10 @@ export class RegistroMotoPage implements OnInit {
 
   chooseFile(event){
     this.selectedFile = event.target.files;
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }
