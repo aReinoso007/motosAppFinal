@@ -31,7 +31,6 @@ export class AuthService {
         if(user){
           this.userData = user;
           localStorage.setItem('user', JSON.stringify(this.userData));
-          //console.log('informacion de usuario: ', localStorage.getItem('user'));
           return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
         }else {
           return of(null);
@@ -91,7 +90,6 @@ export class AuthService {
     const user: any = JSON.parse(JSON.stringify(userTemp));
 
     if(doc == null || doc ===""){
-      //creamos la cuenta del usuario
       data ={
         uid: user.uid,
         rol: 'user',
@@ -105,7 +103,6 @@ export class AuthService {
     }else if( doc.active === false ){
      throw { error_code: 999, error_message: 'Acceso denegado' };
     }else{
-      //se actualiza la cuenta
       data ={
         uid: user.uid,
         email: user.email || null,
@@ -113,14 +110,12 @@ export class AuthService {
         lastLogin: new Date(Number(user.lastLoginAt)) || new Date()
       };
     }
-    console.log("data: ", JSON.stringify(data));
     const userRef = this.afs.collection<any>('users');
     return userRef.doc(`${user.uid}`).set(data, {merge: true});
   }
 
   get isLoggedIn(){
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log('usuario auth Service ', user);
     return (user !==null) ? true : false;
   }
 
