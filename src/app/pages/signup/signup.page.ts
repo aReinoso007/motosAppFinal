@@ -20,7 +20,7 @@ export class SignupPage implements OnInit {
     public router: Router,
     private location: Location,
     public menu: MenuController
-    ) { this.menu.enable(false); }
+    ) { this.menu.enable(false, 'custom'); }
 
   ngOnInit() {
   }

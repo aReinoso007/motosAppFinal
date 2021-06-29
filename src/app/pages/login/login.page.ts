@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     private location: Location,
     public menu: MenuController
     ) {
-      this.menu.enable(false);
+      this.menu.enable(false, 'custom');
     }
 
   ngOnInit() {

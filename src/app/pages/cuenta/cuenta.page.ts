@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-cuenta',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cuenta.page.scss'],
 })
 export class CuentaPage implements OnInit {
-
-  constructor() { }
+  user: any;
+  constructor(
+    private usuarioService: UsuarioService
+  ) { }
 
   ngOnInit() {
+    this.getUserData();
+  }
+
+  getUserData(){
+    const user = this.usuarioService.getCurrentUser();
+    console.log('data del usuario: ', user);
+    this.user = user;
   }
 
 }
