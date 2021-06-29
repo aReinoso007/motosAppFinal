@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
@@ -9,8 +10,10 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class CuentaPage implements OnInit {
   user: any;
   constructor(
-    private usuarioService: UsuarioService
-  ) { }
+    private usuarioService: UsuarioService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
     this.getUserData();
@@ -18,7 +21,6 @@ export class CuentaPage implements OnInit {
 
   getUserData(){
     const user = this.usuarioService.getCurrentUser();
-    console.log('data del usuario: ', user);
     this.user = user;
   }
 

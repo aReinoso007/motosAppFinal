@@ -23,8 +23,12 @@ export class UsuarioService {
 
   getCurrentUser(){
     const user = firebase.auth().currentUser;
-    console.log('current user: ', user);
     return user;
+  }
+
+  get isUserLoggedIn(){
+    const user = firebase.auth().currentUser;
+    return (user !== null) ? true: false;
   }
 
 }

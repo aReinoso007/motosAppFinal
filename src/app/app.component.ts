@@ -63,8 +63,8 @@ export class AppComponent implements OnInit{
   }
 
   checkLoginStatus(){
-    console.log('get isLogged in function: ', this.authService.isLoggedIn);
-    return this.updateLoginStatus(this.authService.isLoggedIn);
+    console.log('get isLogged in function: ', this.userService.isUserLoggedIn);
+    return this.updateLoginStatus(this.userService.isUserLoggedIn);
   }
 
   updateLoginStatus(loggedIn: boolean){

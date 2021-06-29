@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { UserDataDirective } from './providers/user-data.directive';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 @NgModule({
   declarations: [AppComponent, UserDataDirective],
@@ -33,7 +35,7 @@ import { UserDataDirective } from './providers/user-data.directive';
     AngularFireAuthModule
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [AuthService, AuthGuard, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

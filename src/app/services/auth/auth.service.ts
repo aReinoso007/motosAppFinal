@@ -119,13 +119,14 @@ export class AuthService {
   }
 
   get isLoggedIn(){
-    const user = firebase.default.auth().currentUser;
-    console.log('usuario recuperado de funcion: ', user);
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('usuario auth Service ', user);
     return (user !==null) ? true : false;
   }
 
   async logOut(): Promise<any>{
     window.dispatchEvent(new CustomEvent('user:logout'));
+    localStorage.removeItem('user');
     return this.afAuth.signOut();
   }
 
