@@ -40,7 +40,7 @@ export class AppComponent implements OnInit{
     }
   ];
   constructor(
-    private menu: MenuController,
+    //private menu: MenuController,
     private router: Router,
     //private platform: Platform,
     public authService: AuthService,
@@ -57,13 +57,11 @@ export class AppComponent implements OnInit{
   logout(){
     this.authService.logOut();
     this.updateLoginStatus(this.loggedIn);
-    console.log('updated loggedin status: ', this.loggedIn);
     this.router.navigateByUrl('/home');
     
   }
 
   checkLoginStatus(){
-    console.log('get isLogged in function: ', this.userService.isUserLoggedIn);
     return this.updateLoginStatus(this.userService.isUserLoggedIn);
   }
 

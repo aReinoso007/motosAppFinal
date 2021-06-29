@@ -17,10 +17,6 @@ export class UsuarioService {
     refUserInfo.doc(uid).collection<any>('informacion').doc(userInfo.uid).set(param, {merge: true});
   }
 
-  addMotorcyle(moto: Moto){
-    const refMotoInfo = this.afs.collection('users');
-  }
-
   getCurrentUser(){
     const user = firebase.auth().currentUser;
     return user;
