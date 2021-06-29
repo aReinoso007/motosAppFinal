@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserOptions } from 'src/app/interfaces/user-options';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoadingController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,11 @@ export class LoginPage implements OnInit {
   showPassword = false;
   passwordToggleIcon = 'eye';
 
-  constructor(public authService: AuthService, public router: Router) { }
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    private location: Location
+    ) { }
 
   ngOnInit() {
   }
@@ -45,4 +50,7 @@ export class LoginPage implements OnInit {
     }
   }
 
+  goBack(){
+    this.location.back();
+  }
 }
