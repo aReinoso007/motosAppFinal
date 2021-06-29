@@ -10,8 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class CuentaPage implements OnInit {
   user: any;
   constructor(
-    private usuarioService: UsuarioService,
-    private router: Router
+    private usuarioService: UsuarioService
   ) {
   }
 
