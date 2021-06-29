@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Location } from '@angular/common';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -17,8 +18,9 @@ export class SignupPage implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router,
-    private location: Location
-    ) { }
+    private location: Location,
+    public menu: MenuController
+    ) { this.menu.enable(false); }
 
   ngOnInit() {
   }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserOptions } from 'src/app/interfaces/user-options';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Location } from '@angular/common';
 
 @Component({
@@ -21,8 +21,11 @@ export class LoginPage implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router,
-    private location: Location
-    ) { }
+    private location: Location,
+    public menu: MenuController
+    ) {
+      this.menu.enable(false);
+    }
 
   ngOnInit() {
   }
