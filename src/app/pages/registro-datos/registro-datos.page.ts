@@ -19,6 +19,7 @@ export class RegistroDatosPage implements OnInit {
     private userService: UsuarioService
   ) { }
 
+  /*check if data retrived is null and redirect back to singup*/
   ngOnInit() {
     this.authService.user.subscribe(data=>{
       this.user = data;
