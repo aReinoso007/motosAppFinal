@@ -5,32 +5,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Telefono</ion-label>
-      <ion-input [(ngModel)]="userInfo.telefono"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label>Pais</ion-label>
-      <ion-input [(ngModel)]="userInfo.pais"></ion-input>
-    </ion-item>
+  <div class="formulario">
+    <ion-list class="lista">
+      <ion-item class="item">
+        <ion-icon name="call"></ion-icon>
+        <ion-label> Telefono</ion-label>
+        <ion-input [(ngModel)]="userInfo.telefono" type="number" accept="number"></ion-input>
+      </ion-item>
+  
+      <ion-item class="item">
+        <ion-label>Pais</ion-label>
+        <ion-input [(ngModel)]="userInfo.pais"></ion-input>
+      </ion-item>
+  
+      <ion-item class="item">
+        <ion-label>Provincia</ion-label>
+        <ion-select class="seleccion" placeholder="Seleccione una"  [value]="userInfo.provincia" interface="popover">
+          <ion-select-option value="Azuay">Azuay</ion-select-option>
+          <ion-select-option value="Cañar">Cañar</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item class="item">
+        <ion-label>Ciudad</ion-label>
+        <ion-select placeholder="Seleccione una"  [value]="userInfo.ciudad" interface="popover">
+          <ion-select-option value="Azuay">Cuenca</ion-select-option>
+          <ion-select-option value="Cañar">Azogues</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Provincia</ion-label>
-      <ion-select placeholder="Seleccione una"  [value]="userInfo.provincia" interface="popover">
-        <ion-select-option value="Azuay">Azuay</ion-select-option>
-        <ion-select-option value="Cañar">Cañar</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-button (click)="saveUserInfo()" type="submit" expand="block" class="boton">Registrarse</ion-button>
+    
+    </ion-list>
+  </div>
 
-    <ion-item>
-      <ion-label>Ciudad</ion-label>
-      <ion-select placeholder="Seleccione una"  [value]="userInfo.ciudad" interface="popover">
-        <ion-select-option value="Azuay">Cuenca</ion-select-option>
-        <ion-select-option value="Cañar">Azogues</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-button (click)="saveUserInfo()" type="submit" expand="block" color="success">Registrarse</ion-button>
-  </ion-list>
 </ion-content>
