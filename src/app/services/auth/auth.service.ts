@@ -68,18 +68,12 @@ export class AuthService {
 
   async emailPasswordLogin(email: string, password: string){
     try{
-      this.loading = await this.loadingCTRL.create({
-        message: 'Logging in'
-      });
-      await this.loading.present();
       const credentials = firebase.default.auth.EmailAuthProvider.credential(email, password);
       const firebaseUser = await firebase.default.auth().signInWithCredential(credentials);
 
-      this.loading.dismiss();
       window.dispatchEvent(new CustomEvent('user:login'));
       return await this.updateUserData(firebaseUser.user, 'email');
     }catch(err){
-      this.loading.dismiss();
       return err;
     }
   }

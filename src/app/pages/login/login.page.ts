@@ -15,12 +15,14 @@ export class LoginPage implements OnInit {
   login: UserOptions = { name:'', email:'', password:''};
   submitted = false;
   isTextFieldType: boolean;
+  loading: any;
 
   constructor(
     public authService: AuthService,
     public router: Router,
     private location: Location,
-    public menu: MenuController
+    public menu: MenuController,
+    public loadingCTRL: LoadingController
     ) {
       this.menu.enable(false, 'custom');
     }
@@ -30,11 +32,17 @@ export class LoginPage implements OnInit {
 
   async onLogin(form: NgForm){
     this.submitted = true;
+    this.loading = await this.loadingCTRL.create({
+      message: 'Ingresando'
+    });
     if(form.valid){
+      await this.loading.present();
       const error = await this.authService.emailPasswordLogin(this.login.email, this.login.password);
       if(error === undefined ){
+        this.loading.dismiss();
         this.router.navigateByUrl('/app/tabs/landing');
       }else{
+        this.loading.dismiss();
         alert(JSON.stringify(error));
       }
     }
