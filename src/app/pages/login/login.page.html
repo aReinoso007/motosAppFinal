@@ -18,8 +18,9 @@
   </div>
 
   <form #loginForm="ngForm" novalidate id="form">
-    <ion-item>
-      <ion-label position="stacked" color="primary"><a>E-mail</a></ion-label>
+    <ion-icon name="mail-outline" size="large" slot="start"></ion-icon>
+    <ion-item slot="end">
+      <br>
       <ion-input
         [(ngModel)]="login.email"
         name="email"
@@ -28,6 +29,7 @@
         spellcheck="false"
         autocapitalize="off"
         inputmode = "email"
+        placeholder="E-mail"
         required
       >
       </ion-input>
@@ -41,17 +43,27 @@
         Email es requerido
       </p>
     </ion-text>
-
+    <ion-icon name="lock-closed-outline" size="large" slot="start"></ion-icon>
     <ion-item>
-      <ion-label position="stacked" color="primary" ><a>Contraseña</a></ion-label>
       <ion-input
         [(ngModel)]="login.password"
         name="password"
-        type="password"
+        [type]="isTextFieldType ? 'text' : 'password'"
         #password="ngModel"
         required
+        placeholder="Contraseña"
       >
       </ion-input>
+      <button
+          (click)="togglePassword()"
+          ion-button
+          item-right
+        >
+          <ion-icon
+            [name]="isTextFieldType ? 'eye-off' : 'eye'"
+          >
+          </ion-icon>
+        </button> 
     </ion-item>
 
     <ion-text color="danger">
@@ -68,7 +80,7 @@
       type="submit"
       expand="block"
       shape="round"
-      >Ingresar</ion-button
-    >
+      >Ingresar</ion-button>
+      <a>Olvide mi contrasena</a>
   </form>
 </ion-content>

@@ -18,10 +18,10 @@
     />
   </div>
 
-  <form #signupForm="ngForm" novalidate>
+  <form #signupForm="ngForm" id="form">
+    
     <ion-item>
-      <ion-label position="stacked" color="primary">Nombre</ion-label>
-      <ion-input
+      <ion-input placeholder="Nombre"
         [(ngModel)]="signup.name"
         name="name"
         type="text"
@@ -30,6 +30,7 @@
       >
       </ion-input>
     </ion-item>
+
     <ion-text color="danger">
       <p [hidden]="name.valid || submitted === false" class="ion-padding-start">
         Nombre es requerido
@@ -37,8 +38,7 @@
     </ion-text>
 
     <ion-item>
-      <ion-label position="stacked" color="primary">Email</ion-label>
-      <ion-input
+      <ion-input  placeholder="E-mail"
         [(ngModel)]="signup.email"
         name="username"
         type="text"
@@ -57,8 +57,7 @@
     </ion-text>
 
     <ion-item>
-      <ion-label position="stacked" color="primary">Contraseña</ion-label>
-      <ion-input
+      <ion-input  placeholder="Contraseña"
         [(ngModel)]="signup.password"
         name="password"
         type="password"
@@ -80,4 +79,5 @@
       >Registrarse</ion-button
     >
   </form>
+
 </ion-content>

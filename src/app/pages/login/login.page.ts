@@ -14,9 +14,7 @@ import { Location } from '@angular/common';
 export class LoginPage implements OnInit {
   login: UserOptions = { name:'', email:'', password:''};
   submitted = false;
-
-  showPassword = false;
-  passwordToggleIcon = 'eye';
+  isTextFieldType: boolean;
 
   constructor(
     public authService: AuthService,
@@ -43,12 +41,7 @@ export class LoginPage implements OnInit {
   }
 
   togglePassword(){
-    this.showPassword =!this.showPassword;
-    if(this.passwordToggleIcon === 'eye' ){
-      this.passwordToggleIcon = 'eye-off';
-    }else{
-      this.passwordToggleIcon = 'eye';
-    }
+    this.isTextFieldType = !this.isTextFieldType;
   }
 
   goBack(){
