@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Moto } from 'src/app/model/moto.model';
+//import { Moto } from 'src/app/model/moto.model';
 import { UserInfo } from 'src/app/model/userInfo.model';
 import firebase from 'firebase';
 
@@ -8,8 +8,9 @@ import firebase from 'firebase';
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  constructor(private afs: AngularFirestore) { }
+  constructor(
+    private afs: AngularFirestore
+    ) { }
 
   insertUserData(userInfo: UserInfo, uid: string){
     const refUserInfo = this.afs.collection('users');

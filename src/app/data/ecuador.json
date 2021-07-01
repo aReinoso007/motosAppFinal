@@ -1,5 +1,5 @@
 {
-    "1": {
+    "ecuador": [{
       "provincia": "AZUAY",
       "cantones": {
         "101": {
@@ -182,7 +182,7 @@
         }
       }
     },
-    "2": {
+    {
       "provincia": "BOLIVAR",
       "cantones": {
         "201": {
@@ -256,7 +256,7 @@
         }
       }
     },
-    "3": {
+    {
       "provincia": "CAÑAR",
       "cantones": {
         "301": {
@@ -337,7 +337,7 @@
         }
       }
     },
-    "4": {
+    {
       "provincia": "CARCHI",
       "cantones": {
         "401": {
@@ -412,7 +412,7 @@
         }
       }
     },
-    "5": {
+    {
       "provincia": "COTOPAXI",
       "cantones": {
         "501": {
@@ -505,7 +505,7 @@
         }
       }
     },
-    "6": {
+    {
       "provincia": "CHIMBORAZO",
       "cantones": {
         "601": {
@@ -625,7 +625,7 @@
         }
       }
     },
-    "7": {
+    {
       "provincia": "EL ORO",
       "cantones": {
         "701": {
@@ -791,7 +791,7 @@
         }
       }
     },
-    "8": {
+    {
       "provincia": "ESMERALDAS",
       "cantones": {
         "801": {
@@ -918,7 +918,7 @@
         }
       }
     },
-    "9": {
+    {
       "provincia": "GUAYAS",
       "cantones": {
         "901": {
@@ -1145,7 +1145,7 @@
         }
       }
     },
-    "10": {
+    {
       "provincia": "IMBABURA",
       "cantones": {
         "1001": {
@@ -1233,7 +1233,7 @@
         }
       }
     },
-    "11": {
+    {
       "provincia": "LOJA",
       "cantones": {
         "1101": {
@@ -1432,7 +1432,7 @@
         }
       }
     },
-    "12": {
+    {
       "provincia": "LOS RIOS",
       "cantones": {
         "1201": {
@@ -1555,7 +1555,7 @@
         }
       }
     },
-    "13": {
+    {
       "provincia": "MANABI",
       "cantones": {
         "1301": {
@@ -1785,7 +1785,7 @@
         }
       }
     },
-    "14": {
+    {
       "provincia": "MORONA SANTIAGO",
       "cantones": {
         "1401": {
@@ -1923,7 +1923,7 @@
         }
       }
     },
-    "15": {
+    {
       "provincia": "NAPO",
       "cantones": {
         "1501": {
@@ -1982,7 +1982,7 @@
         }
       }
     },
-    "16": {
+    {
       "provincia": "PASTAZA",
       "cantones": {
         "1601": {
@@ -2031,7 +2031,7 @@
         }
       }
     },
-    "17": {
+    {
       "provincia": "PICHINCHA",
       "cantones": {
         "1701": {
@@ -2180,7 +2180,7 @@
         }
       }
     },
-    "18": {
+    {
       "provincia": "TUNGURAHUA",
       "cantones": {
         "1801": {
@@ -2296,7 +2296,7 @@
         }
       }
     },
-    "19": {
+    {
       "provincia": "ZAMORA CHINCHIPE",
       "cantones": {
         "1901": {
@@ -2393,7 +2393,7 @@
         }
       }
     },
-    "20": {
+    {
       "provincia": "GALAPAGOS",
       "cantones": {
         "2001": {
@@ -2421,7 +2421,7 @@
         }
       }
     },
-    "21": {
+    {
       "provincia": "SUCUMBIOS",
       "cantones": {
         "2101": {
@@ -2499,7 +2499,7 @@
         }
       }
     },
-    "22": {
+    {
       "provincia": "ORELLANA",
       "cantones": {
         "2201": {
@@ -2558,7 +2558,7 @@
         }
       }
     },
-    "23": {
+    {
       "provincia": "SANTO DOMINGO DE LOS TSACHILAS",
       "cantones": {
         "2301": {
@@ -2583,7 +2583,7 @@
         }
       }
     },
-    "24": {
+    {
       "provincia": "SANTA ELENA",
       "cantones": {
         "2401": {
@@ -2620,7 +2620,7 @@
         }
       }
     },
-    "90": {
+    {
       "cantones": {
         "9001": {
           "canton": "LAS GOLONDRINAS",
@@ -2635,5 +2635,5 @@
           "parroquias": null
         }
       }
-    }
+    }]
   }

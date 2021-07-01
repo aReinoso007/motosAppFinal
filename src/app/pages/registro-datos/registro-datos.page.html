@@ -21,17 +21,15 @@
   
       <ion-item class="item">
         <ion-label>Provincia</ion-label>
-        <ion-select class="seleccion" placeholder="Seleccione una"  [value]="userInfo.provincia" interface="popover">
-          <ion-select-option value="Azuay">Azuay</ion-select-option>
-          <ion-select-option value="Cañar">Cañar</ion-select-option>
+        <ion-select class="seleccion" placeholder="Seleccione una" [(ngModel)]="userInfo.provincia" interface="popover">
+          <ion-select-option *ngFor="let p of ecuadorList">{{p.provincia}}</ion-select-option>
         </ion-select>
       </ion-item>
   
       <ion-item class="item">
         <ion-label>Ciudad</ion-label>
-        <ion-select placeholder="Seleccione una"  [value]="userInfo.ciudad" interface="popover">
-          <ion-select-option value="Azuay">Cuenca</ion-select-option>
-          <ion-select-option value="Cañar">Azogues</ion-select-option>
+        <ion-select class="seleccion" placeholder="Seleccione una" [(ngModel)]="userInfo.ciudad" interface="popover">
+          <ion-select-option *ngFor="let p of ecuadorList">{{p}}</ion-select-option>
         </ion-select>
       </ion-item>
 

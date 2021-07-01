@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from 'src/app/model/userInfo.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import ecuador from '../../data/ecuador.json';
+import { Country, State, City } from 'country-state-city';
 
 @Component({
   selector: 'app-registro-datos',
@@ -12,19 +13,26 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class RegistroDatosPage implements OnInit {
   user: any;
   userInfo: UserInfo = new UserInfo();
-
+  ecuadorList: any;
+  lista: any;
+  l: any;
   constructor(
-    private authService: AuthService,
     private router: Router,
     private userService: UsuarioService
   ) { }
 
-  /*check if data retrived is null and redirect back to singup*/
   ngOnInit() {
-    this.authService.user.subscribe(data=>{
+    /*this.authService.user.subscribe(data=>{
       this.user = data;
       this.userInfo.uidUsuario = data.uid;
-    });
+    });*/
+    this.ecuadorList = ecuador.ecuador;
+    console.log('ecuador: ', this.ecuadorList[1].cantones[201]);
+    console.log('csc: ', Country.getAllCountries());
+  }
+
+  changeProvincia(){
+
   }
 
   saveUserInfo(){
