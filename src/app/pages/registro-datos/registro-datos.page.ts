@@ -13,9 +13,9 @@ import { Country, State, City } from 'country-state-city';
 export class RegistroDatosPage implements OnInit {
   user: any;
   userInfo: UserInfo = new UserInfo();
-  ecuadorList: any;
-  lista: any;
-  l: any;
+  paises: any;
+  estados: any;
+  ciudades: any;
   constructor(
     private router: Router,
     private userService: UsuarioService
@@ -26,9 +26,10 @@ export class RegistroDatosPage implements OnInit {
       this.user = data;
       this.userInfo.uidUsuario = data.uid;
     });*/
-    this.ecuadorList = ecuador.ecuador;
-    console.log('ecuador: ', this.ecuadorList[1].cantones[201]);
-    console.log('csc: ', Country.getAllCountries());
+    this.paises = Country.getAllCountries();
+    this.estados = State.getStatesOfCountry('IN');
+    this.ciudades = City.getCitiesOfState('IN', 'DL');
+    console.log('estados: ', this.estados[1].name);
   }
 
   changeProvincia(){
@@ -45,6 +46,9 @@ export class RegistroDatosPage implements OnInit {
     }else{
       alert('Informacion de usuario incompleta');
     }
+  }
+
+  getStatesOfCountry(event){
   }
 
 }
