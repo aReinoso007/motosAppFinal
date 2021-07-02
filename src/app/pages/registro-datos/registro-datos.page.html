@@ -16,8 +16,8 @@
   
       <ion-item class="item">
         <ion-label>Pais</ion-label>
-        <ion-input [(ngModel)]="userInfo.pais"></ion-input>
-        <ion-select class="seleccion" placeholder="Seleccione una" [(ngModel)]="userInfo.pais" interface="popover">
+        <ion-select class="seleccion" placeholder="Seleccione una" [(ngModel)]="userInfo.pais" 
+        interface="popover"  (ionChange)="getStatesOfCountry($event)" >
           <ion-select-option *ngFor="let p of paises">{{p.name}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -25,7 +25,7 @@
       <ion-item class="item">
         <ion-label>Provincia</ion-label>
         <ion-select class="seleccion" placeholder="Seleccione una" [(ngModel)]="userInfo.provincia" interface="popover">
-          <ion-select-option *ngFor="let p of estados">{{p.name}}</ion-select-option>
+          <ion-select-option *ngFor="let p of estados" value={{userInfo.provincia}}>{{p.name}}</ion-select-option>
         </ion-select>
       </ion-item>
   

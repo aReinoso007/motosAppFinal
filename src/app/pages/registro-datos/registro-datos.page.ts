@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from 'src/app/model/userInfo.model';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
-import ecuador from '../../data/ecuador.json';
 import { Country, State, City } from 'country-state-city';
 
 @Component({
@@ -29,11 +28,6 @@ export class RegistroDatosPage implements OnInit {
     this.paises = Country.getAllCountries();
     this.estados = State.getStatesOfCountry('IN');
     this.ciudades = City.getCitiesOfState('IN', 'DL');
-    console.log('estados: ', this.estados[1].name);
-  }
-
-  changeProvincia(){
-
   }
 
   saveUserInfo(){
@@ -48,7 +42,8 @@ export class RegistroDatosPage implements OnInit {
     }
   }
 
-  getStatesOfCountry(event){
+  getStatesOfCountry(id: any){
+    console.log('pais recuperado: ', id);
   }
 
 }
